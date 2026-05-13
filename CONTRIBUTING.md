@@ -1,5 +1,8 @@
 # Contributing to Python Environments Extension
 
+> [!NOTE]
+> This guide provides instruction on how to contribute to the official project instead of this fork.
+
 Thank you for your interest in contributing to the Python Environments extension! This guide will help you get started.
 
 ## Prerequisites
