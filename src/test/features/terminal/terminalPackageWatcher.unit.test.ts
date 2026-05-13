@@ -21,7 +21,7 @@ function createMockEnvironment(overrides?: Partial<PythonEnvironment>): PythonEn
     const envPath = Uri.file('test-env').fsPath;
     const pythonPath = Uri.file('test-env/bin/python').fsPath;
     return {
-        envId: { id: 'test-env-id', managerId: 'ms-python.python:venv' },
+        envId: { id: 'test-env-id', managerId: 'wubzbz.python:venv' },
         name: 'Test Environment',
         displayName: 'Test Environment',
         shortDisplayName: 'TestEnv',
@@ -275,7 +275,7 @@ suite('terminalPackageWatcher - getEnvironmentForPackageRefresh', () => {
     test('should return activated environment when terminal has one tracked', async () => {
         // Mock - Terminal has a tracked conda environment
         const condaEnv = createMockEnvironment({
-            envId: { id: 'conda-env', managerId: 'ms-python.python:conda' },
+            envId: { id: 'conda-env', managerId: 'wubzbz.python:conda' },
             displayName: 'Conda Environment',
         });
 
@@ -308,7 +308,7 @@ suite('terminalPackageWatcher - getEnvironmentForPackageRefresh', () => {
     test('should fall back to getEnvironmentForTerminal when no activated environment', async () => {
         // Mock - Terminal has no tracked activation, fallback returns venv
         const venvEnv = createMockEnvironment({
-            envId: { id: 'venv-env', managerId: 'ms-python.python:venv' },
+            envId: { id: 'venv-env', managerId: 'wubzbz.python:venv' },
             displayName: 'Venv Environment',
         });
 
@@ -359,12 +359,12 @@ suite('terminalPackageWatcher - getEnvironmentForPackageRefresh', () => {
     test('should prioritize activated environment over fallback', async () => {
         // Mock - Both activated env and fallback would return different envs
         const activatedCondaEnv = createMockEnvironment({
-            envId: { id: 'conda-activated', managerId: 'ms-python.python:conda' },
+            envId: { id: 'conda-activated', managerId: 'wubzbz.python:conda' },
             displayName: 'Activated Conda Env',
         });
 
         const workspaceVenvEnv = createMockEnvironment({
-            envId: { id: 'workspace-venv', managerId: 'ms-python.python:venv' },
+            envId: { id: 'workspace-venv', managerId: 'wubzbz.python:venv' },
             displayName: 'Workspace Venv',
         });
 
@@ -452,7 +452,7 @@ suite('terminalPackageWatcher - registerTerminalPackageWatcher', () => {
     test('should call refreshPackages on pip install with venv environment', async () => {
         // Mock - Terminal has venv environment
         const venvEnv = createMockEnvironment({
-            envId: { id: 'venv-env', managerId: 'ms-python.python:venv' },
+            envId: { id: 'venv-env', managerId: 'wubzbz.python:venv' },
         });
 
         mockTerminalEnv = {
@@ -481,7 +481,7 @@ suite('terminalPackageWatcher - registerTerminalPackageWatcher', () => {
     test('should call refreshPackages on conda install with conda environment', async () => {
         // Mock - Terminal has conda environment
         const condaEnv = createMockEnvironment({
-            envId: { id: 'conda-env', managerId: 'ms-python.python:conda' },
+            envId: { id: 'conda-env', managerId: 'wubzbz.python:conda' },
         });
 
         mockTerminalEnv = {
@@ -509,7 +509,7 @@ suite('terminalPackageWatcher - registerTerminalPackageWatcher', () => {
     test('should call refreshPackages on poetry add with poetry environment', async () => {
         // Mock - Terminal has poetry environment
         const poetryEnv = createMockEnvironment({
-            envId: { id: 'poetry-env', managerId: 'ms-python.python:poetry' },
+            envId: { id: 'poetry-env', managerId: 'wubzbz.python:poetry' },
         });
 
         mockTerminalEnv = {
@@ -654,7 +654,7 @@ suite('terminalPackageWatcher - registerTerminalPackageWatcher', () => {
     test('should use terminal activated conda env over workspace venv (subproject scenario)', async () => {
         // Mock - Scenario: Root workspace has venv, but terminal has conda env activated
         const activatedCondaEnv = createMockEnvironment({
-            envId: { id: 'subproject-conda', managerId: 'ms-python.python:conda' },
+            envId: { id: 'subproject-conda', managerId: 'wubzbz.python:conda' },
             displayName: 'Subproject Conda',
         });
 
@@ -689,7 +689,7 @@ suite('terminalPackageWatcher - registerTerminalPackageWatcher', () => {
     test('should fall back to workspace environment when terminal has no tracked activation', async () => {
         // Mock - Terminal has no tracked activation, fallback provides workspace venv
         const workspaceVenv = createMockEnvironment({
-            envId: { id: 'workspace-venv', managerId: 'ms-python.python:venv' },
+            envId: { id: 'workspace-venv', managerId: 'wubzbz.python:venv' },
             displayName: 'Workspace Venv',
         });
 

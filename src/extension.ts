@@ -478,7 +478,7 @@ export async function activate(context: ExtensionContext): Promise<PythonEnviron
                 const issueData = await collectEnvironmentInfo(context, envManagers, projectManager);
 
                 await commands.executeCommand('workbench.action.openIssueReporter', {
-                    extensionId: 'ms-python.vscode-python-envs',
+                    extensionId: 'wubzbz.vscode-python-envs',
                     issueTitle: `[Python Environments] ${title}`,
                     issueBody: `## Description\n${description}\n\n## Steps to Reproduce\n1. \n2. \n3. \n\n## Expected Behavior\n\n\n## Actual Behavior\n\n\n<!-- The following information was automatically generated -->\n\n<details>\n<summary>Environment Information</summary>\n\n\`\`\`\n${issueData}\n\`\`\`\n\n</details>`,
                 });

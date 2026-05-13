@@ -66,7 +66,7 @@ export class PipenvManager implements EnvironmentManager, Disposable {
     ) {
         this.name = 'pipenv';
         this.displayName = 'Pipenv';
-        this.preferredPackageManagerId = 'ms-python.python:pip';
+        this.preferredPackageManagerId = 'wubzbz.python:pip';
         this.tooltip = new MarkdownString(PipenvStrings.pipenvManager, true);
     }
 
@@ -122,7 +122,7 @@ export class PipenvManager implements EnvironmentManager, Disposable {
             if (toolSource === 'none') {
                 result = 'tool_not_found';
                 if (this.projectManager) {
-                    await notifyMissingManagerIfDefault('ms-python.python:pipenv', this.projectManager, this.api);
+                    await notifyMissingManagerIfDefault('wubzbz.python:pipenv', this.projectManager, this.api);
                 }
             }
         } catch (ex) {

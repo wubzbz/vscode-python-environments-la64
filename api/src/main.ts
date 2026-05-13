@@ -1338,7 +1338,7 @@ export interface PythonEnvironmentApi
         PythonExecutionApi,
         PythonEnvironmentVariablesApi {}
 
-export const EXTENSION_ID = 'ms-python.vscode-python-envs';
+export const EXTENSION_ID = 'wubzbz.vscode-python-envs';
 
 // eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace PythonEnvironments {

@@ -50,17 +50,17 @@ suite('PythonPackageManagerApi Tests', () => {
     setup(() => {
         // Mock extension APIs to avoid registration errors
         const mockPythonExtension = {
-            id: 'ms-python.python',
+            id: 'wubzbz.python',
             extensionPath: '/mock/python/extension',
         };
         const mockEnvsExtension = {
-            id: 'ms-python.vscode-python-envs',
+            id: 'wubzbz.vscode-python-envs',
             extensionPath: '/mock/envs/extension',
         };
 
         getExtensionStub = sinon.stub(extensionApis, 'getExtension');
-        getExtensionStub.withArgs('ms-python.python').returns(mockPythonExtension as Extension<unknown>);
-        getExtensionStub.withArgs('ms-python.vscode-python-envs').returns(mockEnvsExtension as Extension<unknown>);
+        getExtensionStub.withArgs('wubzbz.python').returns(mockPythonExtension as Extension<unknown>);
+        getExtensionStub.withArgs('wubzbz.vscode-python-envs').returns(mockEnvsExtension as Extension<unknown>);
 
         sinon
             .stub(extensionApis, 'allExtensions')

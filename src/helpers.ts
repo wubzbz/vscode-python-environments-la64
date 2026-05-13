@@ -27,7 +27,7 @@ export async function collectEnvironmentInfo(
         info.push(`Extension Version: ${extensionVersion}`);
 
         // Python extension version
-        const pythonExtension = extensions.getExtension('ms-python.python');
+        const pythonExtension = extensions.getExtension('wubzbz.python');
         const pythonVersion = pythonExtension?.packageJSON?.version || 'not installed';
         info.push(`Python Extension Version: ${pythonVersion}`);
 

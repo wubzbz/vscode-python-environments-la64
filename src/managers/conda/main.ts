@@ -32,7 +32,7 @@ export async function registerCondaFeatures(
             managerName: 'conda',
             reason: 'tool_not_found',
         });
-        await notifyMissingManagerIfDefault('ms-python.python:conda', projectManager, api);
+        await notifyMissingManagerIfDefault('wubzbz.python:conda', projectManager, api);
         return;
     }
 
@@ -57,7 +57,7 @@ export async function registerCondaFeatures(
             api.registerPackageManager(packageManager),
         );
     } catch (ex) {
-        await notifyMissingManagerIfDefault('ms-python.python:conda', projectManager, api);
+        await notifyMissingManagerIfDefault('wubzbz.python:conda', projectManager, api);
         const err = ex instanceof Error ? ex : new Error(String(ex));
         (err as Error & { failureStage?: string }).failureStage = stage;
         throw err;

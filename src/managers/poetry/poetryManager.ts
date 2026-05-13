@@ -58,7 +58,7 @@ export class PoetryManager implements EnvironmentManager, Disposable {
     ) {
         this.name = 'poetry';
         this.displayName = 'Poetry';
-        this.preferredPackageManagerId = 'ms-python.python:poetry';
+        this.preferredPackageManagerId = 'wubzbz.python:poetry';
         this.tooltip = new MarkdownString(PoetryStrings.poetryManager, true);
     }
 
@@ -120,7 +120,7 @@ export class PoetryManager implements EnvironmentManager, Disposable {
             if (toolSource === 'none') {
                 result = 'tool_not_found';
                 if (this.projectManager) {
-                    await notifyMissingManagerIfDefault('ms-python.python:poetry', this.projectManager, this.api);
+                    await notifyMissingManagerIfDefault('wubzbz.python:poetry', this.projectManager, this.api);
                 }
             }
         } catch (ex) {

@@ -122,17 +122,17 @@ suite('Project Manager Initialization - Settings Preservation', () => {
             if (key === 'pythonProjects') {
                 // These are existing project settings that should NOT be overwritten
                 return [
-                    { path: 'alice', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
-                    { path: 'alice/bob', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
-                    { path: 'ada', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
+                    { path: 'alice', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
+                    { path: 'alice/bob', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
+                    { path: 'ada', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
                 ] as unknown as T;
             }
             if (key === 'defaultEnvManager') {
                 // User changed this to conda
-                return 'ms-python.python:conda' as T;
+                return 'wubzbz.python:conda' as T;
             }
             if (key === 'defaultPackageManager') {
-                return 'ms-python.python:conda' as T;
+                return 'wubzbz.python:conda' as T;
             }
             return defaultValue;
         };
@@ -264,15 +264,15 @@ suite('Project Manager Initialization - Settings Preservation', () => {
 
         test('changing defaultEnvManager externally should NOT rewrite all project settings', async () => {
             // Start with venv as default
-            let currentDefaultEnvManager = 'ms-python.python:venv';
+            let currentDefaultEnvManager = 'wubzbz.python:venv';
             const mockConfig = new MockWorkspaceConfiguration();
             (mockConfig as any).get = <T>(key: string, defaultValue?: T): T | undefined => {
                 if (key === 'pythonProjects') {
                     return [
                         {
                             path: 'project-a',
-                            envManager: 'ms-python.python:poetry',
-                            packageManager: 'ms-python.python:pip',
+                            envManager: 'wubzbz.python:poetry',
+                            packageManager: 'wubzbz.python:pip',
                         },
                     ] as unknown as T;
                 }
@@ -292,7 +292,7 @@ suite('Project Manager Initialization - Settings Preservation', () => {
             addPythonProjectSettingStub.resetHistory();
 
             // Simulate user changes defaultEnvManager to conda in settings.json
-            currentDefaultEnvManager = 'ms-python.python:conda';
+            currentDefaultEnvManager = 'wubzbz.python:conda';
             configChangeEmitter.fire({
                 affectsConfiguration: (section: string) => section === 'python-envs.defaultEnvManager',
             });
@@ -311,7 +311,7 @@ suite('Project Manager Initialization - Settings Preservation', () => {
             const mockConfig = new MockWorkspaceConfiguration();
             (mockConfig as any).get = <T>(key: string, defaultValue?: T): T | undefined => {
                 if (key === 'pythonProjects') {return [] as unknown as T;}
-                if (key === 'defaultEnvManager') {return 'ms-python.python:venv' as T;}
+                if (key === 'defaultEnvManager') {return 'wubzbz.python:venv' as T;}
                 return defaultValue;
             };
             mockConfig.update = () => Promise.resolve();
@@ -348,7 +348,7 @@ suite('Project Manager Initialization - Settings Preservation', () => {
             const mockConfig = new MockWorkspaceConfiguration();
             (mockConfig as any).get = <T>(key: string, defaultValue?: T): T | undefined => {
                 if (key === 'pythonProjects') {return [] as unknown as T;}
-                if (key === 'defaultEnvManager') {return 'ms-python.python:venv' as T;}
+                if (key === 'defaultEnvManager') {return 'wubzbz.python:venv' as T;}
                 return defaultValue;
             };
             mockConfig.update = () => Promise.resolve();
@@ -491,10 +491,10 @@ suite('Project Manager Initialization - Settings Preservation', () => {
                     return [] as unknown as T;
                 }
                 if (key === 'defaultEnvManager') {
-                    return 'ms-python.python:venv' as T;
+                    return 'wubzbz.python:venv' as T;
                 }
                 if (key === 'defaultPackageManager') {
-                    return 'ms-python.python:pip' as T;
+                    return 'wubzbz.python:pip' as T;
                 }
                 return defaultValue;
             };
@@ -524,8 +524,8 @@ suite('Project Manager Initialization - Settings Preservation', () => {
             const pythonProjects: PythonProjectSettings[] = [
                 {
                     path: 'existing-project',
-                    envManager: 'ms-python.python:poetry',
-                    packageManager: 'ms-python.python:pip',
+                    envManager: 'wubzbz.python:poetry',
+                    packageManager: 'wubzbz.python:pip',
                 },
             ];
 
@@ -535,10 +535,10 @@ suite('Project Manager Initialization - Settings Preservation', () => {
                     return pythonProjects as unknown as T;
                 }
                 if (key === 'defaultEnvManager') {
-                    return 'ms-python.python:venv' as T;
+                    return 'wubzbz.python:venv' as T;
                 }
                 if (key === 'defaultPackageManager') {
-                    return 'ms-python.python:pip' as T;
+                    return 'wubzbz.python:pip' as T;
                 }
                 return defaultValue;
             };
@@ -638,16 +638,16 @@ suite('Project-Specific Settings Preservation on Reload', () => {
         (mockConfig as any).get = <T>(key: string, defaultValue?: T): T | undefined => {
             if (key === 'pythonProjects') {
                 return [
-                    { path: 'alice/bob', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
-                    { path: 'ada', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
-                    { path: 'alice', envManager: 'ms-python.python:venv', packageManager: 'ms-python.python:pip' },
+                    { path: 'alice/bob', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
+                    { path: 'ada', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
+                    { path: 'alice', envManager: 'wubzbz.python:venv', packageManager: 'wubzbz.python:pip' },
                 ] as unknown as T;
             }
             if (key === 'defaultEnvManager') {
-                return 'ms-python.python:conda' as T;
+                return 'wubzbz.python:conda' as T;
             }
             if (key === 'defaultPackageManager') {
-                return 'ms-python.python:conda' as T;
+                return 'wubzbz.python:conda' as T;
             }
             return defaultValue;
         };

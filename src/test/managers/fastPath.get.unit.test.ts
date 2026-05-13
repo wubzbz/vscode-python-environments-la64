@@ -106,7 +106,7 @@ function createManagerCases(): ManagerCase[] {
     return [
         {
             name: 'VenvManager',
-            managerId: 'ms-python.python:venv',
+            managerId: 'wubzbz.python:venv',
             persistedPath: path.resolve('test-workspace', '.venv'),
             createContext: (sandbox: sinon.SinonSandbox) => {
                 const getPersistedStub = sandbox.stub(venvUtils, 'getVenvForWorkspace');
@@ -122,7 +122,7 @@ function createManagerCases(): ManagerCase[] {
         },
         {
             name: 'CondaEnvManager',
-            managerId: 'ms-python.python:conda',
+            managerId: 'wubzbz.python:conda',
             persistedPath: path.resolve('test', 'conda', 'envs', 'myenv'),
             createContext: (sandbox: sinon.SinonSandbox) => {
                 const getPersistedStub = sandbox.stub(condaUtils, 'getCondaForWorkspace');
@@ -134,7 +134,7 @@ function createManagerCases(): ManagerCase[] {
         },
         {
             name: 'SysPythonManager',
-            managerId: 'ms-python.python:system',
+            managerId: 'wubzbz.python:system',
             persistedPath: path.resolve('test', 'bin', 'python3'),
             createContext: (sandbox: sinon.SinonSandbox) => {
                 const getPersistedStub = sandbox.stub(sysCache, 'getSystemEnvForWorkspace');
@@ -146,7 +146,7 @@ function createManagerCases(): ManagerCase[] {
         },
         {
             name: 'PyEnvManager',
-            managerId: 'ms-python.python:pyenv',
+            managerId: 'wubzbz.python:pyenv',
             persistedPath: path.resolve('test', '.pyenv', 'versions', '3.11.0', 'bin', 'python'),
             createContext: (sandbox: sinon.SinonSandbox) => {
                 const getPersistedStub = sandbox.stub(pyenvUtils, 'getPyenvForWorkspace');
@@ -158,7 +158,7 @@ function createManagerCases(): ManagerCase[] {
         },
         {
             name: 'PipenvManager',
-            managerId: 'ms-python.python:pipenv',
+            managerId: 'wubzbz.python:pipenv',
             persistedPath: path.resolve('test', '.local', 'share', 'virtualenvs', 'project-abc123', 'bin', 'python'),
             createContext: (sandbox: sinon.SinonSandbox) => {
                 const getPersistedStub = sandbox.stub(pipenvUtils, 'getPipenvForWorkspace');
@@ -291,7 +291,7 @@ suite('Manager get() fast path', () => {
     suite('VenvManager specific', () => {
         test('fast path: background init failure resets _initialized for retry', async () => {
             const persistedPath = path.resolve('test-workspace', '.venv');
-            const mockEnv = createMockEnv('ms-python.python:venv', persistedPath);
+            const mockEnv = createMockEnv('wubzbz.python:venv', persistedPath);
             const getVenvStub = sandbox.stub(venvUtils, 'getVenvForWorkspace').resolves(persistedPath);
             const resolveVenvStub = sandbox.stub(venvUtils, 'resolveVenvPythonEnvironmentPath').resolves(mockEnv);
 
@@ -321,7 +321,7 @@ suite('Manager get() fast path', () => {
 
         test('fast path: uses scope.fsPath when getPythonProject returns undefined', async () => {
             const persistedPath = path.resolve('test-workspace', '.venv');
-            const mockEnv = createMockEnv('ms-python.python:venv', persistedPath);
+            const mockEnv = createMockEnv('wubzbz.python:venv', persistedPath);
             const getVenvStub = sandbox.stub(venvUtils, 'getVenvForWorkspace').resolves(persistedPath);
             const resolveVenvStub = sandbox.stub(venvUtils, 'resolveVenvPythonEnvironmentPath').resolves(mockEnv);
 

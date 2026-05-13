@@ -150,11 +150,11 @@ suite('ManagerReady - race condition handling', () => {
         sinon.stub(telemetrySender, 'sendTelemetryEvent');
         sinon.stub(windowApis, 'showErrorMessage').returns(Promise.resolve(undefined));
         sinon.stub(extensionApis, 'getExtension').returns({
-            id: 'ms-python.python',
+            id: 'wubzbz.python',
             isActive: true,
         } as unknown as ReturnType<typeof extensionApis.getExtension>);
-        sinon.stub(settingHelpers, 'getDefaultEnvManagerSetting').returns('ms-python.python:venv');
-        sinon.stub(settingHelpers, 'getDefaultPkgManagerSetting').returns('ms-python.python:pip');
+        sinon.stub(settingHelpers, 'getDefaultEnvManagerSetting').returns('wubzbz.python:venv');
+        sinon.stub(settingHelpers, 'getDefaultPkgManagerSetting').returns('wubzbz.python:pip');
 
         const mockEm = {
             onDidChangeEnvironmentManager: envManagerEmitter.event,
@@ -178,7 +178,7 @@ suite('ManagerReady - race condition handling', () => {
     });
 
     test('no install prompt when manager registers before timeout', async () => {
-        const waitPromise = waitForEnvManagerId(['ms-python.python:venv']);
+        const waitPromise = waitForEnvManagerId(['wubzbz.python:venv']);
         // Flush microtasks so the internal await _deferred.promise completes
         // and the timeout/deferred is set up
         await clock.tickAsync(0);
@@ -186,7 +186,7 @@ suite('ManagerReady - race condition handling', () => {
         // Manager registers before timeout
         envManagerEmitter.fire({
             kind: 'registered',
-            manager: { id: 'ms-python.python:venv' } as unknown as InternalEnvironmentManager,
+            manager: { id: 'wubzbz.python:venv' } as unknown as InternalEnvironmentManager,
         });
 
         await clock.tickAsync(0);
@@ -202,7 +202,7 @@ suite('ManagerReady - race condition handling', () => {
 
     test('no install prompt on timeout when extension is installed but manager never registered', async () => {
         // Extension IS installed (getExtension returns it), but manager never fires registration event
-        const waitPromise = waitForEnvManagerId(['ms-python.python:venv']);
+        const waitPromise = waitForEnvManagerId(['wubzbz.python:venv']);
         // Flush microtasks so internal await completes and timeout is armed
         await clock.tickAsync(0);
 
@@ -227,7 +227,7 @@ suite('ManagerReady - race condition handling', () => {
         const getExtensionStub = extensionApis.getExtension as sinon.SinonStub;
         getExtensionStub.returns(undefined); // Extension not installed
 
-        const waitPromise = waitForEnvManagerId(['ms-python.python:venv']);
+        const waitPromise = waitForEnvManagerId(['wubzbz.python:venv']);
         // Flush microtasks so internal await completes and timeout is armed
         await clock.tickAsync(0);
 
@@ -244,13 +244,13 @@ suite('ManagerReady - race condition handling', () => {
     test('manager registered before wait resolves immediately without prompt', async () => {
         envManagerEmitter.fire({
             kind: 'registered',
-            manager: { id: 'ms-python.python:venv' } as unknown as InternalEnvironmentManager,
+            manager: { id: 'wubzbz.python:venv' } as unknown as InternalEnvironmentManager,
         });
 
         await clock.tickAsync(0);
 
         // Wait should resolve immediately since the manager already registered
-        const waitPromise = waitForEnvManagerId(['ms-python.python:venv']);
+        const waitPromise = waitForEnvManagerId(['wubzbz.python:venv']);
         await clock.tickAsync(0);
         await waitPromise;
 
@@ -259,11 +259,11 @@ suite('ManagerReady - race condition handling', () => {
     });
 
     test('pkg manager wait resolves when registration event fires', async () => {
-        const waitPromise = waitForPkgManagerId(['ms-python.python:pip']);
+        const waitPromise = waitForPkgManagerId(['wubzbz.python:pip']);
 
         pkgManagerEmitter.fire({
             kind: 'registered',
-            manager: { id: 'ms-python.python:pip' } as unknown as InternalPackageManager,
+            manager: { id: 'wubzbz.python:pip' } as unknown as InternalPackageManager,
         });
 
         await clock.tickAsync(0);

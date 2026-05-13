@@ -59,7 +59,7 @@ export class PyEnvManager implements EnvironmentManager, Disposable {
     ) {
         this.name = 'pyenv';
         this.displayName = 'PyEnv';
-        this.preferredPackageManagerId = 'ms-python.python:pip';
+        this.preferredPackageManagerId = 'wubzbz.python:pip';
         this.tooltip = new MarkdownString(PyenvStrings.pyenvManager, true);
     }
 
@@ -120,7 +120,7 @@ export class PyEnvManager implements EnvironmentManager, Disposable {
             if (toolSource === 'none') {
                 result = 'tool_not_found';
                 if (this.projectManager) {
-                    await notifyMissingManagerIfDefault('ms-python.python:pyenv', this.projectManager, this.api);
+                    await notifyMissingManagerIfDefault('wubzbz.python:pyenv', this.projectManager, this.api);
                 }
             }
         } catch (ex) {

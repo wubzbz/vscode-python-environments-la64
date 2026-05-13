@@ -11,7 +11,7 @@ import { NativePythonFinder } from '../../../managers/common/nativePythonFinder'
 
 function makeEnv(name: string, envPath: string, version: string = '3.12.0'): PythonEnvironment {
     return new PythonEnvironmentImpl(
-        { id: `${name}-test`, managerId: 'ms-python.python:conda' },
+        { id: `${name}-test`, managerId: 'wubzbz.python:conda' },
         {
             name,
             displayName: `${name} (${version})`,

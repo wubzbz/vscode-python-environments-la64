@@ -27,10 +27,10 @@ function getTestWorkspacePath(): string {
  * and are logged explicitly as ignored global edits.
  */
 suite('Setting Helpers - Settings Write Behavior', () => {
-    const SYSTEM_MANAGER_ID = 'ms-python.python:system';
-    const VENV_MANAGER_ID = 'ms-python.python:venv';
-    const PIP_MANAGER_ID = 'ms-python.python:pip';
-    const CONDA_MANAGER_ID = 'ms-python.python:conda';
+    const SYSTEM_MANAGER_ID = 'wubzbz.python:system';
+    const VENV_MANAGER_ID = 'wubzbz.python:venv';
+    const PIP_MANAGER_ID = 'wubzbz.python:pip';
+    const CONDA_MANAGER_ID = 'wubzbz.python:conda';
 
     let updateCalls: Array<{ key: string; value: unknown; target: boolean | ConfigurationTarget | undefined }>;
 
@@ -211,8 +211,8 @@ suite('Setting Helpers - Settings Write Behavior', () => {
  * Instead, we should use defaultEnvManager/defaultPackageManager settings.
  */
 suite('Setting Helpers - Empty Path Bug Fix', () => {
-    const VENV_MANAGER_ID = 'ms-python.python:venv';
-    const PIP_MANAGER_ID = 'ms-python.python:pip';
+    const VENV_MANAGER_ID = 'wubzbz.python:venv';
+    const PIP_MANAGER_ID = 'wubzbz.python:pip';
 
     const workspacePath = getTestWorkspacePath();
     const workspaceUri = Uri.file(workspacePath);
@@ -404,9 +404,9 @@ suite('Setting Helpers - Empty Path Bug Fix', () => {
  * When there's an existing entry with "path": "", it should be fixed or removed.
  */
 suite('Setting Helpers - Empty Path Migration', () => {
-    const VENV_MANAGER_ID = 'ms-python.python:venv';
-    const PIP_MANAGER_ID = 'ms-python.python:pip';
-    const CONDA_MANAGER_ID = 'ms-python.python:conda';
+    const VENV_MANAGER_ID = 'wubzbz.python:venv';
+    const PIP_MANAGER_ID = 'wubzbz.python:pip';
+    const CONDA_MANAGER_ID = 'wubzbz.python:conda';
 
     const workspacePath = getTestWorkspacePath();
     const workspaceUri = Uri.file(workspacePath);

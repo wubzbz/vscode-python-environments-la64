@@ -25,7 +25,7 @@
         }
     },
     "prettier.tabWidth": 4,
-    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "python-envs.defaultEnvManager": "wubzbz.python:venv",
     "git.branchRandomName.enable": true,
     "git.branchProtection": ["main"],
     "git.branchProtectionPrompt": "alwaysCommitToNewBranch",

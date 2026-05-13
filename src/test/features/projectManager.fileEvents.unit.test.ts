@@ -76,10 +76,10 @@ suite('Project Manager File Event Handling', () => {
                 return [] as unknown as T;
             }
             if (key === 'defaultEnvManager') {
-                return 'ms-python.python:venv' as T;
+                return 'wubzbz.python:venv' as T;
             }
             if (key === 'defaultPackageManager') {
-                return 'ms-python.python:pip' as T;
+                return 'wubzbz.python:pip' as T;
             }
             return defaultValue;
         };
@@ -311,8 +311,8 @@ suite('updatePythonProjectSettingPath', () => {
                 return [
                     {
                         path: 'old-project',
-                        envManager: 'ms-python.python:venv',
-                        packageManager: 'ms-python.python:pip',
+                        envManager: 'wubzbz.python:venv',
+                        packageManager: 'wubzbz.python:pip',
                     },
                 ] as unknown as T;
             }
@@ -352,8 +352,8 @@ suite('updatePythonProjectSettingPath', () => {
                 return [
                     {
                         path: 'other-project',
-                        envManager: 'ms-python.python:venv',
-                        packageManager: 'ms-python.python:pip',
+                        envManager: 'wubzbz.python:venv',
+                        packageManager: 'wubzbz.python:pip',
                     },
                 ] as unknown as T;
             }
@@ -390,8 +390,8 @@ suite('updatePythonProjectSettingPath', () => {
                 return [
                     {
                         path: 'pyenv-project',
-                        envManager: 'ms-python.python:pyenv',
-                        packageManager: 'ms-python.python:conda',
+                        envManager: 'wubzbz.python:pyenv',
+                        packageManager: 'wubzbz.python:conda',
                     },
                 ] as unknown as T;
             }
@@ -417,12 +417,12 @@ suite('updatePythonProjectSettingPath', () => {
         assert.strictEqual(updatedProjects[0].path, 'pyenv-project-renamed', 'Path should be updated');
         assert.strictEqual(
             updatedProjects[0].envManager,
-            'ms-python.python:pyenv',
+            'wubzbz.python:pyenv',
             'envManager should be preserved (not reset to default)',
         );
         assert.strictEqual(
             updatedProjects[0].packageManager,
-            'ms-python.python:conda',
+            'wubzbz.python:conda',
             'packageManager should be preserved (not reset to default)',
         );
     });

@@ -4,7 +4,7 @@ export const EXTENSION_ROOT = path.dirname(path.dirname(__dirname));
 export const EXTENSION_TEST_ROOT = path.join(EXTENSION_ROOT, 'src', 'test');
 
 // Extension identifiers
-export const ENVS_EXTENSION_ID = 'ms-python.vscode-python-envs';
+export const ENVS_EXTENSION_ID = 'wubzbz.vscode-python-envs';
 
 // Test type detection via environment variables
 // These are set by the test runner scripts before launching tests

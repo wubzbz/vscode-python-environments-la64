@@ -27,7 +27,7 @@ function createMockEnvironment(options: {
     return new PythonEnvironmentImpl(
         {
             id: options.id ?? 'test-env',
-            managerId: options.managerId ?? 'ms-python.python:test-manager',
+            managerId: options.managerId ?? 'wubzbz.python:test-manager',
         },
         {
             name: options.name ?? '.venv (3.12)',
@@ -59,7 +59,7 @@ function createMockManager(
         supportsRemove?: boolean;
     } = {},
 ): InternalEnvironmentManager {
-    return new InternalEnvironmentManager(options.id ?? 'ms-python.python:test-manager', {
+    return new InternalEnvironmentManager(options.id ?? 'wubzbz.python:test-manager', {
         name: options.name ?? 'test',
         displayName: options.displayName,
         description: 'test',
@@ -78,13 +78,13 @@ suite('Test TreeView Items', () => {
     suite('EnvManagerTreeItem', () => {
         test('Sets id to manager id for tree item identification', () => {
             // Arrange
-            const manager = createMockManager({ id: 'ms-python.python:venv' });
+            const manager = createMockManager({ id: 'wubzbz.python:venv' });
 
             // Act
             const item = new EnvManagerTreeItem(manager);
 
             // Assert
-            assert.strictEqual(item.treeItem.id, 'ms-python.python:venv');
+            assert.strictEqual(item.treeItem.id, 'wubzbz.python:venv');
         });
 
         test('Context value excludes create when manager does not support it', () => {
@@ -95,7 +95,7 @@ suite('Test TreeView Items', () => {
             const item = new EnvManagerTreeItem(manager);
 
             // Assert
-            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvManager;ms-python.python:test-manager;');
+            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvManager;wubzbz.python:test-manager;');
         });
 
         test('Context value includes create when manager supports it', () => {
@@ -106,7 +106,7 @@ suite('Test TreeView Items', () => {
             const item = new EnvManagerTreeItem(manager);
 
             // Assert
-            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvManager;create;ms-python.python:test-manager;');
+            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvManager;create;wubzbz.python:test-manager;');
         });
 
         test('Uses name as label when displayName is not provided', () => {
@@ -274,7 +274,7 @@ suite('Test TreeView Items', () => {
         let parentManager: EnvManagerTreeItem;
 
         setup(() => {
-            parentManager = new EnvManagerTreeItem(createMockManager({ id: 'ms-python.python:conda' }));
+            parentManager = new EnvManagerTreeItem(createMockManager({ id: 'wubzbz.python:conda' }));
         });
 
         test('Sets id combining manager id and group name for tree item identification', () => {
@@ -282,7 +282,7 @@ suite('Test TreeView Items', () => {
             const item = new PythonGroupEnvTreeItem(parentManager, 'base');
 
             // Assert
-            assert.strictEqual(item.treeItem.id, 'ms-python.python:conda:base');
+            assert.strictEqual(item.treeItem.id, 'wubzbz.python:conda:base');
         });
 
         test('Sets id correctly when group is EnvironmentGroupInfo object', () => {
@@ -293,7 +293,7 @@ suite('Test TreeView Items', () => {
             const item = new PythonGroupEnvTreeItem(parentManager, groupInfo);
 
             // Assert
-            assert.strictEqual(item.treeItem.id, 'ms-python.python:conda:dev-envs');
+            assert.strictEqual(item.treeItem.id, 'wubzbz.python:conda:dev-envs');
         });
 
         test('Uses string group as label', () => {
@@ -320,7 +320,7 @@ suite('Test TreeView Items', () => {
             const item = new PythonGroupEnvTreeItem(parentManager, 'test-group');
 
             // Assert
-            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvGroup;ms-python.python:conda:test-group;');
+            assert.strictEqual(item.treeItem.contextValue, 'pythonEnvGroup;wubzbz.python:conda:test-group;');
         });
     });
 
@@ -406,7 +406,7 @@ suite('Test TreeView Items', () => {
 
     suite('NoPythonEnvTreeItem', () => {
         test('System manager with create: shows install Python label', () => {
-            const manager = new InternalEnvironmentManager('ms-python.python:test-manager', {
+            const manager = new InternalEnvironmentManager('wubzbz.python:test-manager', {
                 name: 'system',
                 displayName: 'Global',
                 description: 'test',
@@ -428,7 +428,7 @@ suite('Test TreeView Items', () => {
         });
 
         test('Non-system manager with create: shows create environment label', () => {
-            const manager = new InternalEnvironmentManager('ms-python.python:test-manager', {
+            const manager = new InternalEnvironmentManager('wubzbz.python:test-manager', {
                 name: 'venv',
                 displayName: 'Venv',
                 description: 'test',
@@ -450,7 +450,7 @@ suite('Test TreeView Items', () => {
         });
 
         test('Manager without create: shows no env found label', () => {
-            const manager = new InternalEnvironmentManager('ms-python.python:test-manager', {
+            const manager = new InternalEnvironmentManager('wubzbz.python:test-manager', {
                 name: 'test',
                 displayName: 'Test',
                 description: 'test',
@@ -469,7 +469,7 @@ suite('Test TreeView Items', () => {
         });
 
         test('System manager without create: shows no env found label', () => {
-            const manager = new InternalEnvironmentManager('ms-python.python:test-manager', {
+            const manager = new InternalEnvironmentManager('wubzbz.python:test-manager', {
                 name: 'system',
                 displayName: 'Global',
                 description: 'test',

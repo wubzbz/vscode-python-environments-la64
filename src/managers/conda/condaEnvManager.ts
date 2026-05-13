@@ -64,7 +64,7 @@ export class CondaEnvManager implements EnvironmentManager, Disposable {
     ) {
         this.name = 'conda';
         this.displayName = 'Conda';
-        this.preferredPackageManagerId = 'ms-python.python:conda';
+        this.preferredPackageManagerId = 'wubzbz.python:conda';
         this.tooltip = new MarkdownString(CondaStrings.condaManager, true);
     }
 

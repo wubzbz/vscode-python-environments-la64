@@ -20,7 +20,7 @@ extension from the list of installed extensions. The version appears next to the
 -->
 
 -   Python Environments extension version: XXX
--   Python extension (`ms-python.python`) version: XXX
+-   Python extension (`wubzbz.python`) version: XXX
 -   VS Code version (Help → About): XXX
 -   OS and version: XXX
 -   Python version (& distribution if applicable, e.g. Anaconda): XXX

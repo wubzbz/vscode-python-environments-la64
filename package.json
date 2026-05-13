@@ -1,9 +1,9 @@
 {
     "name": "vscode-python-envs",
-    "displayName": "Python Environments",
+    "displayName": "Python Environments for LoongArch",
     "description": "Provides a unified python environment experience",
     "version": "1.30.0",
-    "publisher": "ms-python",
+    "publisher": "wubzbz",
     "preview": true,
     "engines": {
         "vscode": "^1.110.0-20260204"
@@ -29,13 +29,13 @@
     "activationEvents": [
         "onLanguage:python"
     ],
-    "homepage": "https://github.com/microsoft/vscode-python-environments",
+    "homepage": "https://github.com/wubzbz/vscode-python-environments-la64",
     "repository": {
         "type": "git",
-        "url": "https://github.com/microsoft/vscode-python-environments.git"
+        "url": "https://github.com/wubzbz/vscode-python-environments-la64.git"
     },
     "bugs": {
-        "url": "https://github.com/microsoft/vscode-python-environments/issues"
+        "url": "https://github.com/wubzbz/vscode-python-environments-la64/issues"
     },
     "main": "./dist/extension.js",
     "l10n": "./l10n",
@@ -46,13 +46,13 @@
                 "python-envs.defaultEnvManager": {
                     "type": "string",
                     "description": "%python-envs.defaultEnvManager.description%",
-                    "default": "ms-python.python:venv",
+                    "default": "wubzbz.python:venv",
                     "scope": "window"
                 },
                 "python-envs.defaultPackageManager": {
                     "type": "string",
                     "description": "%python-envs.defaultPackageManager.description%",
-                    "default": "ms-python.python:pip",
+                    "default": "wubzbz.python:pip",
                     "scope": "window"
                 },
                 "python-envs.pythonProjects": {
@@ -70,12 +70,12 @@
                             "envManager": {
                                 "type": "string",
                                 "description": "%python-envs.pythonProjects.envManager.description%",
-                                "default": "ms-python.python:venv"
+                                "default": "wubzbz.python:venv"
                             },
                             "packageManager": {
                                 "type": "string",
                                 "description": "%python-envs.pythonProjects.packageManager.description%",
-                                "default": "ms-python.python:pip"
+                                "default": "wubzbz.python:pip"
                             }
                         }
                     }
@@ -683,9 +683,9 @@
         "lint": "eslint --config=eslint.config.mjs src",
         "unittest": "mocha --config=./build/.mocha.unittests.json",
         "smoke-test": "vscode-test --label smokeTests",
-        "e2e-test": "vscode-test --label e2eTests --install-extensions ms-python.python",
-        "integration-test": "vscode-test --label integrationTests --install-extensions ms-python.python",
-        "integration-test-multiroot": "vscode-test --label integrationTestsMultiRoot --install-extensions ms-python.python",
+        "e2e-test": "vscode-test --label e2eTests --install-extensions wubzbz.python",
+        "integration-test": "vscode-test --label integrationTests --install-extensions wubzbz.python",
+        "integration-test-multiroot": "vscode-test --label integrationTestsMultiRoot --install-extensions wubzbz.python",
         "vsce-package": "vsce package -o ms-python-envs-insiders.vsix"
     },
     "devDependencies": {
@@ -700,7 +700,7 @@
         "@typescript-eslint/eslint-plugin": "^8.16.0",
         "@typescript-eslint/parser": "^8.16.0",
         "@vscode/test-electron": "^2.5.2",
-        "@vscode/vsce": "^2.24.0",
+        "@vscode/vsce": ">=2.24.0 <=2.26.1",
         "eslint": "^9.15.0",
         "glob": "^8.1.0",
         "mocha": "^10.8.2",
